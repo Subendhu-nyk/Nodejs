@@ -80,13 +80,12 @@ const server = http.createServer((req, res) => {
     // Read messages from file and display them
     const messages = fs.readFileSync('message.txt', 'utf-8');
     if (messages) {
-      res.write('<h2>Messages:</h2>');
-      res.write('<ul>');
+     
       const messageList = messages.split('\n');
       messageList.forEach(message => {
-        res.write(`<li>${message}</li>`);
+        res.write(`${message}`);
       });
-      res.write('</ul>');
+     
     }
 
     res.write('<form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>');
